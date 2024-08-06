@@ -1,0 +1,25 @@
+.Navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #398378;
+    color: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 60px;
+}
+
+.Logo {
+    height: 60px;
+}
+
+.title {
+    flex: 1;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
