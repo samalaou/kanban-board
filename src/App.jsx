@@ -3,6 +3,7 @@ import Footer from './components/Footer'
 import NavBar from './components/NavBar'
 import Sidebar from './components/Sidebar'
 import './App.css'
+import List from './components/List';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
         <NavBar/>
         <div className='main-content'>
           <Sidebar/>
+          <List/>
         </div>
         <Footer/>
       </div>

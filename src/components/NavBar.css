@@ -13,6 +13,11 @@
     height: 60px;
 }
 
+.Navbar > div {
+    margin: auto;
+    text-align: center;
+}
+
 .Logo {
     height: 60px;
 }
