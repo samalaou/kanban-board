@@ -2,6 +2,7 @@ import tasksList from "../assets/kanban.json";
 import { useState } from "react";
 import ListCard from "./ListCard";
 
+
 function List() {
     const [tasks, setTasks] = useState(tasksList);
 
@@ -11,7 +12,7 @@ function List() {
     };
 
     return (
-        <>
+        <div className="TaskList">
             {tasks.map(task => (
                 <ListCard
                     key={task.id}
@@ -24,7 +25,7 @@ function List() {
                     onClickDelete={() => handleOnClickBtn(task.id)}
                 />
             ))}
-        </>
+        </div>
     );
 }
 
