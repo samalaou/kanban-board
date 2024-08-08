@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 import Footer from './components/Footer'
 import NavBar from './components/NavBar'
@@ -21,21 +21,19 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className='App'>
-        <NavBar/>
-        <div className='main-content'>
-          <Sidebar/>
-          <Routes>
-            <Route path="/" element={<HomePage tasks={tasks} onClickDelete={handleOnClickBtn}/>} /> 
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/task/:id" element={<TaskDetailsPage tasks={tasks} onClickDelete={handleOnClickBtn}/>} />
-            <Route path="*" element={ <ErrorPage /> } /> 
-          </Routes>
-        </div>
-        <Footer/>
+    <div className='App'>
+      <NavBar/>
+      <div className='main-content'>
+        <Sidebar/>
+        <Routes>
+          <Route path="/" element={<HomePage tasks={tasks} onClickDelete={handleOnClickBtn}/>} /> 
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/task/:id" element={<TaskDetailsPage tasks={tasks} onClickDelete={handleOnClickBtn}/>} />
+          <Route path="*" element={ <ErrorPage /> } /> 
+        </Routes>
       </div>
-    </Router>
+      <Footer/>
+    </div>
   )
 }
 
