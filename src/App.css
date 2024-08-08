@@ -93,3 +93,35 @@
   height: 30%;
   flex: 1 1 0;    
 }
+
+.ErrorPage {
+  text-align: center;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+.ErrorPage h1 {
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+
+.error-page p {
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.home-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: #fff;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+}
+
+.home-link:hover {
+  background-color: var(--secondary-color);
+}
