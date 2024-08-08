@@ -100,12 +100,7 @@
   margin: 0 auto;
 }
 
-.ErrorPage h1 {
-  font-size: 3rem;
-  color: var(--primary-color);
-}
-
-.error-page p {
+.ErrorPage p {
   font-size: 1.25rem;
   color: #333;
 }
@@ -124,4 +119,20 @@
 
 .home-link:hover {
   background-color: var(--secondary-color);
+}
+
+.AboutPage {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.AboutPage p {
+  font-size: 1.25rem;
+  color: #333;
+}
+
+
+.project-overview {
+  margin-bottom: 2rem;
 }
