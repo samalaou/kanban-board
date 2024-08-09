@@ -1,57 +1,82 @@
 import List from "../components/List";
 import AddTaskForm from "../components/AddTaskForm";
+import AddListForm from "../components/AddListForm";
 import { useState } from 'react';
 
-
 function HomePage(props) {
-    const [isFormVisible, setIsFormVisible] = useState(false);
+    const [formType, setFormType] = useState(null);
     const [currentStatus, setCurrentStatus] = useState('');
+    const [statusList, setStatusList] = useState(['To Do', 'In Progress', 'Done']);
+    const [newListName, setNewListName] = useState('');
 
-    const toggleFormVisibility = (status) => {
-        setCurrentStatus(status);
-        setIsFormVisible(prev => !prev);
+    const toggleFormVisibility = (type, status = '') => {
+        if (formType === type) {
+            setFormType(null);
+        } else {
+            setFormType(type);
+            setCurrentStatus(status);
+        }
     };
 
     const handleAddTask = (newTask) => {
-        props.createTask(newTask);
-        setIsFormVisible(false);
+        props.createTask({ ...newTask, status: currentStatus });
+        setFormType(null);
         setCurrentStatus('');
     };
 
-    const status = ['To Do', 'In Progress', 'Done']
+    const handleAddList = () => {
+        setStatusList(prevStatusList => [...prevStatusList, newListName.trim()]);
+        setNewListName('');
+        setFormType(null);
+    };
 
-    const tasksByStatus = status.reduce((acc, currentStatus) => {
-        acc[currentStatus] = props.tasks.filter(task => task.status === currentStatus);
+    const handleNewListNameChange = (event) => {
+        setNewListName(event.target.value);
+    };
+
+    const tasksByStatus = statusList.reduce((acc, status) => {
+        acc[status] = props.tasks.filter(task => task.status === status);
         return acc;
     }, {});
 
     return (
         <div className="HomePage">
-            {isFormVisible && (
+            {formType === 'addTask' && (
                 <AddTaskForm
-                    status={currentStatus}
                     createTask={handleAddTask}
-                    onClose={toggleFormVisibility}
+                    onClose={() => setFormType(null)}
                 />
             )}
 
+            {formType === 'addList'? (
+                <AddListForm
+                value={newListName}
+                onChange={handleNewListNameChange}
+                handleAddList={handleAddList}
+                onClose={() => setFormType(null)}
+                />
+            ) : (
+                <button onClick={() => toggleFormVisibility('addList')}>
+                    Create New List
+                </button>
+            )}
+
             <div className="ListPanel">
-                {status.map((currentStatus) => (
-                        <div key={currentStatus} className="ListContainer">
-                            <h2>{currentStatus}</h2>
-                            <List
-                                tasks={tasksByStatus[currentStatus]}
-                                onClickDelete={props.onClickDelete}
-                            />
-                            <button onClick={() => toggleFormVisibility(currentStatus)}>
-                                Create New Task
-                            </button>
-                        </div>
-                    ))}
+                {statusList.map(status => (
+                    <div key={status} className="ListContainer">
+                        <h2>{status}</h2>
+                        <List
+                            tasks={tasksByStatus[status]}
+                            onClickDelete={props.onClickDelete}
+                        />
+                        <button onClick={() => toggleFormVisibility('addTask', status)}>
+                            Create New Task
+                        </button>
+                    </div>
+                ))}
             </div>
         </div>
     );
 }
-
 
 export default HomePage;
