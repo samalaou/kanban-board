@@ -27,12 +27,14 @@ function TaskDetailsPage(props) {
                     <p><strong>Priority:</strong> {task.priority}</p>
                     <p><strong>Assigned to:</strong> {task.assignee}</p>
                     <p><strong>Due Date:</strong> {task.dueDate}</p>  
-                    <p><strong>Created on:</strong> {task.createdDate}</p>  
-                    <Link to="/">Back</Link>
-                    
-                    <button onClick={toggleFormVisibility}>
-                        Update Task
-                    </button>
+                    <p><strong>Created on:</strong> {task.createdDate}</p> 
+
+                    <div className="button-container">
+                        <Link to="/">Back</Link>
+                        <button onClick={toggleFormVisibility}>
+                            Update Task
+                        </button>
+                    </div>
 
                     {isFormVisible && (
                         <UpdateTaskForm
