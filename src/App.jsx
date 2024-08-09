@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";  
 import ErrorPage from "./pages/ErrorPage"; 
 import TaskDetailsPage from "./pages/TaskDetailsPage"; 
+import AddTaskPage from "./pages/AddTaskPage"; 
 import './App.css'
 import tasksList from "./assets/kanban.json";
 
@@ -20,6 +21,13 @@ function App() {
       setTasks(updatedTasks);
   };
 
+  const createTask = (newTask) => {
+    const tasksIds = tasks.map((task) => task.id);
+    setTasks([...tasks, { ...newTask, id: Math.max(...tasksIds) +1 }]);
+  }
+
+  console.log(tasks)
+
   return (
     <div className='App'>
       <NavBar/>
@@ -28,6 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage tasks={tasks} onClickDelete={handleOnClickBtn}/>} /> 
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/create-task" element={<AddTaskPage createTask= {createTask}/>} />
           <Route path="/task/:id" element={<TaskDetailsPage tasks={tasks} onClickDelete={handleOnClickBtn}/>} />
           <Route path="*" element={ <ErrorPage /> } /> 
         </Routes>
