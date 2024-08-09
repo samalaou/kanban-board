@@ -5,14 +5,17 @@ import { useState } from 'react';
 
 function HomePage(props) {
     const [isFormVisible, setIsFormVisible] = useState(false);
+    const [currentStatus, setCurrentStatus] = useState('');
 
-    const toggleFormVisibility = () => {
+    const toggleFormVisibility = (status) => {
+        setCurrentStatus(status);
         setIsFormVisible(prev => !prev);
     };
 
     const handleAddTask = (newTask) => {
         props.createTask(newTask);
         setIsFormVisible(false);
+        setCurrentStatus('');
     };
 
     const status = ['To Do', 'In Progress', 'Done']
@@ -24,12 +27,9 @@ function HomePage(props) {
 
     return (
         <div className="HomePage">
-            <button onClick={toggleFormVisibility}>
-                Create New Task
-            </button>
-
             {isFormVisible && (
                 <AddTaskForm
+                    status={currentStatus}
                     createTask={handleAddTask}
                     onClose={toggleFormVisibility}
                 />
@@ -43,12 +43,12 @@ function HomePage(props) {
                                 tasks={tasksByStatus[currentStatus]}
                                 onClickDelete={props.onClickDelete}
                             />
+                            <button onClick={() => toggleFormVisibility(currentStatus)}>
+                                Create New Task
+                            </button>
                         </div>
                     ))}
             </div>
-
-            
-
         </div>
     );
 }

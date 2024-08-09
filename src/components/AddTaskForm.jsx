@@ -5,7 +5,7 @@ function AddTaskForm(props) {
         title: "",
         description: "",
         assignee: "",
-        status: "",
+        status: props.status ? props.status : "",
         priority: "",
         createdDate: "2023-09-16",
         dueDate: "2023-09-16"
