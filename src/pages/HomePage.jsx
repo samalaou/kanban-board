@@ -2,7 +2,7 @@ import List from "../components/List";
 
 function HomePage(props) {
     return (
-        <div>
+        <div className="HomePage">
             <List tasks={props.tasks} onClickDelete={props.onClickDelete} />
         </div>
     );

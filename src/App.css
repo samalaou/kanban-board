@@ -75,23 +75,28 @@
   border-bottom: 1px solid #ccc;
 }
 
-.TaskList{
+.HomePage {
+  display: flex;
+}
+
+.TaskList {
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  text-align: center;
-  height: 100%;
-  z-index: 1;
-  margin-bottom: 10vh;
+  justify-content: center;
+  align-items: start;
 }
 
 .Task {
-  border-radius: 8px;
-  border: 1px solid black;
-  margin: 10px;
-  padding: 10px;
-  height: 30%;
-  flex: 1 1 0;    
+  background-color: #f0f4f8;
+  padding: 0.1rem;
+  border-radius: 0.50rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  min-height: 150px;
+  margin: 20px;
 }
 
 .ErrorPage {
