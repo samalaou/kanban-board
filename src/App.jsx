@@ -7,7 +7,6 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";  
 import ErrorPage from "./pages/ErrorPage"; 
 import TaskDetailsPage from "./pages/TaskDetailsPage"; 
-import './App.css'
 import tasksList from "./assets/kanban.json";
 
 
