@@ -25,6 +25,13 @@ function App() {
     setTasks([...tasks, { ...newTask, id: Math.max(...tasksIds) +1 }]);
   }
 
+  const updateTask = (updatedTask) => {
+    setTasks(tasks.map(task =>
+        task.id === updatedTask.id ? updatedTask : task
+    ));
+}
+
+
   return (
     <div className='App'>
       <NavBar/>
@@ -33,7 +40,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage tasks={tasks} onClickDelete={handleOnClickBtn} createTask={createTask}/>} /> 
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/task/:id" element={<TaskDetailsPage tasks={tasks} onClickDelete={handleOnClickBtn}/>} />
+          <Route path="/task/:id" element={<TaskDetailsPage tasks={tasks} onClickDelete={handleOnClickBtn} updateTask={updateTask}/>} />
           <Route path="*" element={ <ErrorPage /> } /> 
         </Routes>
       </div>
