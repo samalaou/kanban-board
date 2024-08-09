@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function ListCard(props) {
     return (
         <div className="ListCard">
-            <h2>{props.task.title}</h2>
+            <h3>{props.task.title}</h3>
             <p><strong>Priority:</strong> {props.task.priority}</p>
             <p><strong>Assigned to:</strong> {props.task.assignee}</p>
             <div className='button-container'>
