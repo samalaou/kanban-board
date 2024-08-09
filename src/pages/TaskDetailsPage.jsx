@@ -31,9 +31,7 @@ function TaskDetailsPage(props) {
 
                     <div className="button-container">
                         <Link to="/">Back</Link>
-                        <button onClick={toggleFormVisibility}>
-                            Update Task
-                        </button>
+                        <button onClick={toggleFormVisibility}>Update Task</button>
                     </div>
 
                     {isFormVisible && (
