@@ -25,6 +25,10 @@ function HomePage(props) {
     };
 
     const handleAddList = () => {
+        // the new list is lost if we change pages and I should move this state to App
+        // to make it work. But I think this is this component responsability
+        // and if i had an IPA I would put the request here.
+        // that's why im leaving the code as is it right now
         setStatusList(prevStatusList => [...prevStatusList, newListName.trim()]);
         setNewListName('');
         setFormType(null);
