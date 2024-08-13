@@ -1,4 +1,4 @@
-import List from "../components/List";
+import ListPanels from "../components/ListPanels";
 import AddTaskForm from "../components/AddTaskForm";
 import AddListForm from "../components/AddListForm";
 import { useState } from 'react';
@@ -65,20 +65,12 @@ function HomePage(props) {
                 </button>
             )}
 
-            <div className="ListPanel">
-                {statusList.map(status => (
-                    <div key={status} className="ListContainer">
-                        <h2>{status}</h2>
-                        <List
-                            tasks={tasksByStatus[status]}
-                            onClickDelete={props.onClickDelete}
-                        />
-                        <button onClick={() => toggleFormVisibility('addTask', status)}>
-                            Create New Task
-                        </button>
-                    </div>
-                ))}
-            </div>
+            <ListPanels
+                statusList={statusList}
+                tasksByStatus={tasksByStatus}
+                onClickDelete={props.onClickDelete}
+                toggleFormVisibility={toggleFormVisibility}
+            />
         </div>
     );
 }
