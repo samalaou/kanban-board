@@ -176,6 +176,11 @@ button:focus-visible {
   margin: 20px;
 }
 
+.ListCard a {
+  color: inherit;
+  background-color: inherit;
+}
+
 .ListCard .button-container{
   display: flex;
   justify-content: space-evenly;
