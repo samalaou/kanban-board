@@ -5,7 +5,7 @@ function ListPanels(props) {
   const onDragEnd = (result) => {
     const { source, destination } = result;
 
-    if (!destination) {
+    if (!destination || destination.droppableId === 'all-lists') {
       return;
     }
 
