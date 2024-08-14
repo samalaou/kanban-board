@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import Sidebar from './components/Sidebar';
@@ -11,6 +11,17 @@ import tasksList from "./assets/kanban.json";
 
 function App() {
   const [tasks, setTasks] = useState(tasksList);
+  const [tasksByStatus, setTasksByStatus] = useState({});
+
+  useEffect(() => {
+    const updatedTasksByStatus = tasks.reduce((acc, task) => {
+      if (!acc[task.status]) acc[task.status] = [];
+      acc[task.status].push(task);
+      return acc;
+    }, {});
+
+    setTasksByStatus(updatedTasksByStatus);
+  }, [tasks]);
 
   const handleOnClickDelete = (id) => {
     const updatedTasks = tasks.filter(task => task.id !== id);
@@ -28,7 +39,6 @@ function App() {
     ));
   }
 
-
   return (
     <div className='App'>
       <NavBar />
@@ -39,7 +49,7 @@ function App() {
             path="/"
             element={
               <HomePage
-                tasks={tasks}
+                tasksByStatus={tasksByStatus}
                 onClickDelete={handleOnClickDelete}
                 createTask={createTask}
                 updateTask={updateTask}

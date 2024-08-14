@@ -38,12 +38,6 @@ function HomePage(props) {
     setNewListName(event.target.value);
   };
 
-  const tasksByStatus = props.tasks.reduce((acc, task) => {
-    if (!acc[task.status]) acc[task.status] = [];
-    acc[task.status].push(task);
-    return acc;
-  }, {});
-
   const handleUpdateTask = (updatedTask) => {
     console.log(updatedTask)
     props.updateTask(updatedTask)
@@ -74,7 +68,7 @@ function HomePage(props) {
 
       <ListPanels
         statusList={statusList}
-        tasksByStatus={tasksByStatus}
+        tasksByStatus={props.tasksByStatus}
         onClickDelete={props.onClickDelete}
         toggleFormVisibility={toggleFormVisibility}
         onUpdateTask={handleUpdateTask}

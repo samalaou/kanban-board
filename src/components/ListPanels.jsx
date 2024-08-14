@@ -37,7 +37,7 @@ function ListPanels(props) {
                   >
                     <h2>{status}</h2>
                     <List
-                      tasks={props.tasksByStatus[status]}
+                      tasks={props.tasksByStatus[status] || []}
                       onClickDelete={props.onClickDelete}
                     />
                     <button onClick={() => props.toggleFormVisibility('addTask', status)}>
