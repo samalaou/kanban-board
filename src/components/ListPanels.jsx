@@ -8,14 +8,26 @@ function ListPanels(props) {
     if (!destination) {
       return;
     }
-  
-    const sourceTasks = props.tasksByStatus[source.droppableId];
-    const [movedTask] = sourceTasks.filter((task) => task.id !== source.index);
 
-    props.onUpdateTask({
-      ...movedTask,
-      status: destination.droppableId,
-    });
+    const sourceListId = source.droppableId;
+    const destinationListId = destination.droppableId;
+    const sourceTasks = [...props.tasksByStatus[sourceListId]];
+    const [movedTask] = sourceTasks.splice(source.index, 1);
+
+    if (sourceListId === destinationListId) {
+      sourceTasks.splice(destination.index, 0, movedTask);
+      sourceTasks.forEach((task, index) => {
+        task.position = index;
+      });
+      sourceTasks.forEach(task => props.onUpdateTask(task));
+
+    } else {
+      props.onUpdateTask({
+        ...movedTask,
+        status: destinationListId,
+      });
+    }
+
   };
 
   return (

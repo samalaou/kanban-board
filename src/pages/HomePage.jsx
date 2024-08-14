@@ -39,7 +39,6 @@ function HomePage(props) {
   };
 
   const handleUpdateTask = (updatedTask) => {
-    console.log(updatedTask)
     props.updateTask(updatedTask)
   };
 
