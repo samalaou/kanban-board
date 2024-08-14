@@ -40,24 +40,28 @@ function ListPanels(props) {
             {...provided.droppableProps}
           >
             {props.statusList.map((status, index) => (
-              <Droppable key={index} droppableId={status} direction="vertical">
-                {(provided) => (
-                  <div
-                    className="ListContainer"
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                  >
-                    <h2>{status}</h2>
-                    <List
-                      tasks={props.tasksByStatus[status] || []}
-                      onClickDelete={props.onClickDelete}
-                    />
-                    <button onClick={() => props.toggleFormVisibility('addTask', status)}>
-                      Create New Task
-                    </button>
-                  </div>
-                )}
-              </Droppable>
+              <div key={index} className="ListContainer">
+                <Droppable  droppableId={status} direction="vertical">
+                  {(provided) => (
+                    <div
+                      className="ListContainer"
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                    >
+                      <h2>{status}</h2>
+                      <List
+                        tasks={props.tasksByStatus[status] || []}
+                        onClickDelete={props.onClickDelete}
+                      />
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+                <button onClick={() => props.toggleFormVisibility('addTask', status)}>
+                  Create New Task
+                </button>
+              </div>
+
             ))}
           </div>
         )}

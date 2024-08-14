@@ -3,7 +3,7 @@ import ListCard from "./ListCard";
 
 function List(props) {
   return (
-    <div className="TaskList">
+    <>
       {props.tasks.map((task, index) => (
         <Draggable key={task.id} draggableId={`task${task.id.toString()}`} index={index}>
           {(provided) => (
@@ -20,7 +20,7 @@ function List(props) {
           )}
         </Draggable>
       ))}
-    </div>
+    </>
   );
 }
 

@@ -156,16 +156,6 @@ button:focus-visible {
   padding: 2rem;
 }
 
-.TaskList {
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: start;
-}
-
 .ListCard {
   background-color: #f0f4f8;
   padding: 0.5rem;
@@ -336,4 +326,5 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 150px
 }
