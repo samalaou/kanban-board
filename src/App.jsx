@@ -12,7 +12,7 @@ import tasksList from "./assets/kanban.json";
 function App() {
   const [tasks, setTasks] = useState(tasksList);
 
-  const handleOnClickBtn = (id) => {
+  const handleOnClickDelete = (id) => {
     const updatedTasks = tasks.filter(task => task.id !== id);
     setTasks(updatedTasks);
   };
@@ -40,14 +40,14 @@ function App() {
             element={
               <HomePage
                 tasks={tasks}
-                onClickDelete={handleOnClickBtn}
+                onClickDelete={handleOnClickDelete}
                 createTask={createTask}
                 updateTask={updateTask}
               />
             }
           />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/task/:id" element={<TaskDetailsPage tasks={tasks} onClickDelete={handleOnClickBtn} updateTask={updateTask} />} />
+          <Route path="/task/:id" element={<TaskDetailsPage tasks={tasks} updateTask={updateTask} />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
