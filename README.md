@@ -1,8 +1,19 @@
-# React + Vite
+# React Kanban Board App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is a simple task management application built with React. It allows users to create, view, and manage tasks across different status columns using drag-and-drop functionality. Please note that the application does not have a backend or persistent storage, so any changes made will be lost upon refresh.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- **Drag-and-Drop:** Move tasks between columns using drag-and-drop.
+- **Add New Task:** Create new tasks and assign them to a specific status column.
+- **View Task Details:** Click on a task to view more details about it.
+- **Update Task:** Edit task details and save changes.
+- **Delete Task:** Remove tasks from the list.
+
+**Note:** All changes made to tasks will not persist across page refreshes as the data is only stored in-memory and loaded from a local JSON file
+
+## Acknowledgements
+
+**@hello-pangea/dnd:** A library for drag-and-drop functionality.
