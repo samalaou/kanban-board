@@ -1,4 +1,4 @@
-import TaskForm from "../components/TaskForm";
+import TaskForm from "../components/TaskForm"
 
 function AddTaskForm(props) {
     const task = {

@@ -30,7 +30,7 @@ function App() {
 
   const createTask = (newTask) => {
     const tasksIds = tasks.map(task => task.id);
-    setTasks([...tasks, { ...newTask, id: Math.max(...tasksIds) + 1 }]);
+    setTasks([...tasks, { ...newTask, id: (Math.max(...tasksIds) + 1).toString() }]);
   }
 
   const updateTask = (updatedTask) => {

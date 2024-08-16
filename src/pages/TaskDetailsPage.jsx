@@ -3,6 +3,7 @@ import { useState } from 'react';
 import UpdateTaskForm from "../components/UpdateTaskForm";
 
 function TaskDetailsPage(props) {
+    console.log(props.tasks)
     const [isFormVisible, setIsFormVisible] = useState(false);
 
     const { id } = useParams();
